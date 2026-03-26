@@ -1,0 +1,54 @@
+body {
+  font-family: system-ui, Arial;
+  width: 260px;
+  padding-left:5px;
+  background: #f9fafb;
+  
+}
+
+h3 {
+  margin-bottom: none;
+}
+
+input, button {
+  width: 90%;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+button {
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+button.secondary {
+  background: #e5e7eb;
+  color: #111;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#resultBox {
+  margin-top: 10px;
+}
+
+#result {
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+#loginBtn{
+    width: 97%;
+}
+
