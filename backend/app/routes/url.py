@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.url import URL
-from app.schemas.url import URLCreate, URLResponse
-from app.core.deps import get_current_user
+from app.schemas.url import URLCreate, URLListResponse, URLResponse
+from app.core.deps import get_current_user, require_admin
 from app.services.short_code import encode_base62
 
 router = APIRouter(prefix="/urls", tags=["URLs"])
@@ -54,3 +54,10 @@ def disable_url(
     db.commit()
 
     return {"message": "URL disabled successfully"}
+
+@router.get("/all", response_model=list[URLListResponse])
+def list_all_urls(
+    db: Session = Depends(get_db),
+    user=Depends(require_admin)
+):
+    return db.query(URL).filter(URL.is_active==True).all()

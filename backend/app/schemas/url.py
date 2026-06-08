@@ -14,3 +14,13 @@ class URLResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class URLListResponse(BaseModel):
+    id: UUID
+    original_url: HttpUrl
+    short_code: str
+    click_count: int
+    created_at: datetime
+    user_id: UUID
+    class Config:
+        from_attributes = True

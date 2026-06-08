@@ -5,6 +5,10 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 
 from app.database import Base
+from app.models.user import User
+from app.models.url import URL
+
+target_metadata = Base.metadata
 
 # ✅ OPTIONAL (recommended): load .env file
 from dotenv import load_dotenv
@@ -23,7 +27,6 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Metadata for autogenerate
-target_metadata = Base.metadata
 
 
 def run_migrations_offline() -> None:
