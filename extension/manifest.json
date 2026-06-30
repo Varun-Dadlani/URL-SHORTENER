@@ -5,7 +5,7 @@
     "description": "Shorten the current page URL using your FastAPI backend",
     "permissions": ["tabs", "storage", "contextMenus", "notifications"],
     "host_permissions": [
-        "http://127.0.0.1:8000/*"
+        "https://url-shortner-tn0v.onrender.com/*"
     ],
     "action": {
         "default_popup": "popup.html"
