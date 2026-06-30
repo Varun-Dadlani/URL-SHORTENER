@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://url-shortner-tn0v.onrender.com/";
 
 if (!chrome.contextMenus) {
   console.error("contextMenus API not available");
@@ -28,7 +28,7 @@ if (chrome.contextMenus) {
         return;
       }
 
-      const res = await fetch("http://127.0.0.1:8000/urls/", {
+      const res = await fetch(`${API_BASE}urls/`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${data.token}`,
@@ -40,7 +40,7 @@ if (chrome.contextMenus) {
       });
 
       const result = await res.json();
-      const shortUrl = `http://127.0.0.1:8000/${result.short_code}`;
+      const shortUrl = `${API_BASE}${result.short_code}`;
 
       // save short url
       chrome.storage.local.set({ lastShortUrl: shortUrl });

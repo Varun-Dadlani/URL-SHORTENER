@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 
 export default function UrlCard({ url, refresh }) {
-  const shortUrl = `http://127.0.0.1:8000/${url.short_code}`;
+  const shortUrl = `https://url-shortner-tn0v.onrender.com/${url.short_code}`;
   const [clickCount, setClickCount] = useState(url.click_count);
 
   useEffect(() => {

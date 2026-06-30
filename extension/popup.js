@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://url-shortner-tn0v.onrender.com";
 
 const loginSection = document.getElementById("login-section");
 const mainSection = document.getElementById("main-section");
