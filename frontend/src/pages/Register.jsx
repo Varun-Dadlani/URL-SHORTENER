@@ -8,7 +8,7 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      const res = await api.post("/auth/register",{email,password});
+      await api.post("/auth/register",{email,password});
       alert("Account created! Please login");
       window.location.href = "/login";
     } catch (err) {
