@@ -5,6 +5,7 @@ from app.models.url import URL
 from app.schemas.url import URLCreate, URLListResponse, URLResponse
 from app.core.deps import get_current_user, require_admin
 from app.services.short_code import encode_base62
+from app.core.redis_client import redis
 
 router = APIRouter(prefix="/urls", tags=["URLs"])
 
@@ -51,8 +52,9 @@ def disable_url(
         raise HTTPException(status_code=404, detail="URL not found")
 
     url.is_active = False
+    redis.delete(url.short_code)
+    redis.delete(f"{url.short_code}:click_count")
     db.commit()
-
     return {"message": "URL disabled successfully"}
 
 @router.get("/all", response_model=list[URLListResponse])
